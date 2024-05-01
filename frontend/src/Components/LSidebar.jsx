@@ -3,7 +3,7 @@ import React from "react";
 const LSidebar = ({ isOpen, isClose }) => {
   return (
     <>
-        <div className={`h-screen w-[40%] shadow-md top-0 left-0 fixed bg-white flex-col transition-transform duration-300  ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className={`h-screen w-[40%] shadow-lg top-0 left-0 fixed bg-white flex-col transition-transform duration-300  ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
           <div className="h-[20%] m-10">
             <div onClick={isClose} className="cursor-pointer hover:text-orange-400">Close</div>
             <div>
