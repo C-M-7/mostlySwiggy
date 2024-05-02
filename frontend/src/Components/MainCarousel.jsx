@@ -5,19 +5,19 @@ function MainCarousel() {
   const carouselControl = useRef(null);
   const carouselRight = () =>{
     if(carouselControl.current){
-      carouselControl.current.scrollLeft += 100;
+      carouselControl.current.scrollLeft += 200;
     }
   }
 
   const carouselLeft = () =>{
     if(carouselControl.current){
-      carouselControl.current.scrollLeft -= 100;
+      carouselControl.current.scrollLeft -= 200;
     }
   }
 
   return (
     <>  
-        <div className='flex pt-6 justify-between'>
+        <div className='flex p-10 justify-between'>
           <div className='font-bold text-2xl'>What's on your mind?</div>
           <div className='space-x-2'>
             <button onClick={carouselLeft} className='hover:text-orange-400'>left</button>
