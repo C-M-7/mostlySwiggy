@@ -18,7 +18,7 @@ function MainCarousel() {
   return (
     <>  
         <div className='flex p-10 justify-between'>
-          <div className='font-bold text-2xl'>What's on your mind?</div>
+          <div className='font-bold text-xl'>What's on your mind?</div>
           <div className='space-x-2'>
             <button onClick={carouselLeft} className='hover:text-orange-400'>left</button>
             <button onClick={carouselRight} className='hover:text-orange-400'>right</button>

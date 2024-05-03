@@ -15,7 +15,7 @@ function Main2Carousel() {
     return (
     <>
         <div className='p-10 flex justify-between'>
-            <div className='font-bold text-2xl'>Top restaurant chains in YOUR_LOCATION</div>
+            <div className='font-bold text-xl'>Top restaurant chains in YOUR_LOCATION</div>
             <div className='space-x-2'>
                 <button onClick={scrollLeft} className='hover:text-orange-400'>left</button>
                 <button onClick={scrollRight} className='hover:text-orange-400'>right</button>
