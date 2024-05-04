@@ -3,7 +3,7 @@ import React from 'react'
 function RSidebar({isOpen, isClose}) {
   return (
     <>
-        <div className={`h-screen w-[30%] right-0 top-0 fixed bg-white shadow-lg transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className={`h-screen w-[30%] right-0 top-0 z-20 fixed bg-white shadow-lg transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
             <div className='px-10'>
                 <div className='pt-12 cursor-pointer hover:text-orange-400' onClick={isClose}>Close</div>
                 <div className='pt-6'>Login<br></br><span className='text-sm'>or create an account</span></div>
