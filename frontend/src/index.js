@@ -11,6 +11,8 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import Restaurant from './Components/restaurantPage/Restaurant';
+import SwiggyCorp from './Components/swiggyCorp/SwiggyCorp';
+import Offers from './Components/offersPage/Offers';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +38,14 @@ const router = createBrowserRouter([
   {
     path:'/restaurant',
     element:<Restaurant/>
+  },
+  {
+    path:'/swiggycorporate',
+    element: <SwiggyCorp/>
+  },
+  {
+    path : '/offers',
+    element: <Offers/>
   }
 ])
 

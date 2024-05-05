@@ -6,7 +6,7 @@ function Footer() {
     <>
         <div className='bg-black text-white px-[15%] flex justify-around pt-12 pb-28'>
             <div>
-                <div className='text-xl font-bold cursor-pointer'>Swiggy</div>
+                <div className='text-xl font-bold cursor-pointer'>mostlySwiggy</div>
 
             </div>
             <div>
@@ -15,7 +15,9 @@ function Footer() {
                     <div>About</div>
                     <div>About</div>
                     <div>About</div>
-                    <div>About</div>
+                    <div>mostlySwiggy One</div>
+                    <div>mostlySwiggy Instamart</div>
+                    <div>mostlySwiggy Genie</div>
                 </div>
             </div>
             <div>

@@ -18,9 +18,9 @@ const Navbar = () => {
         <div className="navfeatures py-6 cursor-pointer  hover:text-orange-400" onClick={toggleLSideBar}>User Location</div>
       </div>
       <div className="flex space-x-12 mx-4">
-        <div className="navfeatures py-6 cursor-pointer  hover:text-orange-400">Swiggy Corporate</div>
+        <Link to='/swiggycorporate' target="_blank" className="navfeatures py-6 cursor-pointer  hover:text-orange-400">Swiggy Corporate</Link>
         <Link to='/search' className="navfeatures py-6 cursor-pointer  hover:text-orange-400">Search</Link>
-        <div className="navfeatures py-6 cursor-pointer  hover:text-orange-400">Offers</div>
+        <Link to='/offers' className="navfeatures py-6 cursor-pointer  hover:text-orange-400">Offers</Link>
         <Link to='/help' className="navfeatures py-6 cursor-pointer  hover:text-orange-400">Help</Link>
         <div className="navfeatures py-6 cursor-pointer  hover:text-orange-400" onClick={toggleRSideBar}>SignIn</div>
         <Link to='/cart' className="navfeatures py-6 cursor-pointer  hover:text-orange-400">Cart</Link>
