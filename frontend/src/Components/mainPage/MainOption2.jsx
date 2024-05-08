@@ -1,5 +1,5 @@
 import React from "react";
-import Option2 from "./Option2";
+import Option2 from "../options/Option2";
 
 function MainOptions2() {
   return (

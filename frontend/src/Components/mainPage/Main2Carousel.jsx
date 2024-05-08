@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import CarouselCard2 from "./CarouselCard2";
+import CarouselCard2 from '../cards/CarouselCard2'
 
 function Main2Carousel() {
   const Carousel2Control = useRef(null);

@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import CarouselCard from "./CarouselCard";
+import CarouselCard from "../cards/CarouselCard";
 
 function MainCarousel() {
   const carouselControl = useRef(null);

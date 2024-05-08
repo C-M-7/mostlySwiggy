@@ -1,11 +1,11 @@
 import "./App.css";
-import CardStack from "./Components/CardStack";
-import Footer from "./Components/Footer";
-import Main2Carousel from "./Components/Main2Carousel";
-import MainCarousel from "./Components/MainCarousel";
-import MainOptions2 from "./Components/MainOption2";
-import MainOptions1 from "./Components/MainOptions1";
-import Navbar from "./Components/Navbar";
+import CardStack from './Components/mainPage/CardStack';
+import Footer from "./Components/mainPage/Footer";
+import Main2Carousel from "./Components/mainPage/Main2Carousel";
+import MainCarousel from "./Components/mainPage/MainCarousel";
+import MainOptions2 from "./Components/mainPage/MainOption2";
+import MainOptions1 from "./Components/mainPage/MainOptions1";
+import Navbar from "./Components/mainPage/Navbar";
 
 function App() {
   return (

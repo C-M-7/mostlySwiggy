@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import LSidebar from "./LSidebar";
 import RSidebar from "./RSidebar";
 import { Link } from "react-router-dom";
+import LSidebar from "./LSidebar";
 
 const Navbar = () => {
   const [LsidebarOpen, setLsidebarOpen] = useState(false);

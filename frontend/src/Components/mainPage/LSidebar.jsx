@@ -1,24 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 
 const LSidebar = ({ isOpen, isClose }) => {
-  const [getlocation, setlocation] = useState(null);
-  
-  const fetchLocation = () =>{
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition((position)=>{
-        const { latitude, longitude } = position.coords;
-        setlocation({ latitude, longitude });
-        if(latitude != null && longitude != null){isClose()};
-      },
-      (error)=>{
-        console.error('Error fetching location:', error.message);
-      }
-      )
-    }
-    else{
-      console.error('Geolocation isnt supported by this browser!');
-    }
-  }
+  // const getLocationData = async(longitude, latitude) =>{
+  //   try{
+  //     const response = await axios.get(`https://www.swiggy.com/mapi/homepage/getCards?lat=${latitude}&lng=${longitude}`)
+  //     console.log(response.data.data.success.cards[1].gridWidget.gridElements.infoWithStyle.restaurants);
+  //     isClose();
+  //   }
+  //   catch(err){
+  //     console.error(err.message);
+  //   }
+  // }
 
   return (
     <>
@@ -34,7 +26,7 @@ const LSidebar = ({ isOpen, isClose }) => {
             </div>
           </div>
           <div>
-            <button className="mx-10 hover:scale-105 duration-200 border shadow-md w-[40%] text-white bg-orange-400 p-2" onClick={fetchLocation}>Get my current Location </button>
+            <button className="mx-10 hover:scale-105 duration-200 border shadow-md w-[40%] text-white bg-orange-400 p-2">Get my current Location </button>
           </div>
         </div>
     </>
