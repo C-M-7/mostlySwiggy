@@ -6,13 +6,15 @@ import Help from './Components/helpPage/Help';
 import Cart from './Components/cartPage/Cart';
 import Search from './Components/searchPage/Search';
 import FoodItem from './Components/fooditemPage/FoodItem';
+import Restaurant from './Components/restaurantPage/Restaurant';
+import SwiggyCorp from './Components/swiggyCorp/SwiggyCorp';
+import Offers from './Components/offersPage/Offers';
+import {Provider} from 'react-redux';
+import { store } from './Redux/Store';
 import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
-import Restaurant from './Components/restaurantPage/Restaurant';
-import SwiggyCorp from './Components/swiggyCorp/SwiggyCorp';
-import Offers from './Components/offersPage/Offers';
 
 const router = createBrowserRouter([
   {
@@ -51,5 +53,7 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <Provider store={store}>
     <RouterProvider router={router} />
+  </Provider>
 );

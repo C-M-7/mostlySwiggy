@@ -1,5 +1,7 @@
-import React, { useRef } from "react";
+import React, {  useRef } from "react";
 import CarouselCard from "../cards/CarouselCard";
+// import {useSelector} from 'react-redux';
+// import axios from 'axios';
 
 function MainCarousel() {
   const carouselControl = useRef(null);
@@ -14,6 +16,21 @@ function MainCarousel() {
       carouselControl.current.scrollLeft -= 200;
     }
   };
+
+// /  const userLocation = useSelector(state => state.userlocation);
+
+  // useEffect(()=>{
+  //   const getLocationData = async() =>{
+  //     try{
+  //       const response = await axios.get(`https://www.swiggy.com/mapi/homepage/getCards?lat=${userLocation.lat}&lng=${userLocation.long}`)
+  //       if(response) console.log(response.data.data.success.cards[1].gridWidget.gridElements.infoWithStyle.restaurants);
+  //     }
+  //     catch(err){
+  //       console.error(err.message);
+  //     }
+  //   }
+  //   getLocationData();
+  // })
 
   return (
     <>
