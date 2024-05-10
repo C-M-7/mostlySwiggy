@@ -12,8 +12,7 @@ const LSidebar = ({ isOpen, isClose }) => {
       console.log(latitude, longitude);
       const response = await axios.get(`https://www.swiggy.com/mapi/homepage/getCards?lat=${latitude}&lng=${longitude}`)
       // console.log(response.data.data.success.cards[1].gridWidget.gridElements.infoWithStyle.restaurants);
-      console.log(response);
-      // dispatch(setRestaurantData(response.data.data.success.cards[1].gridWidget.gridElements.infoWithStyle.restaurants));
+      dispatch(setRestaurantData(response.data.data.success.cards[1].gridWidget.gridElements.infoWithStyle.restaurants));
     }
     catch(err){
       console.error(err.message);
