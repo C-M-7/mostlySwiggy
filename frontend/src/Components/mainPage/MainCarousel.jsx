@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import CarouselCard from "../cards/CarouselCard";
 import {useSelector} from 'react-redux';
 
@@ -16,10 +16,7 @@ function MainCarousel() {
     }
   };
 
-  const restaurantData = useSelector(state => state.restaurantData);
-  useEffect(()=>{
-    console.log(restaurantData);
-  }, [restaurantData])
+  // if(restaurantData) console.log(restaurantData)
 
   return (
     <>
@@ -38,6 +35,7 @@ function MainCarousel() {
         className="flex overflow-x-hidden pt-6 scroll-smooth"
         ref={carouselControl}
       >
+         
         <CarouselCard cName cPic />
         <CarouselCard cName cPic />
         <CarouselCard cName cPic />

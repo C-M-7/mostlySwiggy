@@ -1,7 +1,10 @@
 import React from 'react'
 import MainCard from '../cards/MainCard'
+import { useSelector } from 'react-redux'
 
 function CardStack() {
+  const restaurantData = useSelector(state => state.RestaurantsData);
+
   return (
     <>
         <div className='p-10'>
@@ -16,6 +19,13 @@ function CardStack() {
               <button className='border border-black rounded-3xl py-2 px-4'>Filter</button>
             </div>
             <div className='flex flex-wrap'>
+            {
+              restaurantData &&
+              restaurantData.map((res)=>(
+                <MainCard key={res.info.id} resName={res.info.name} resRating={res.info.avgRating}/> 
+              ))
+            }
+              {/* <MainCard/>
               <MainCard/>
               <MainCard/>
               <MainCard/>
@@ -33,8 +43,7 @@ function CardStack() {
               <MainCard/>
               <MainCard/>
               <MainCard/>
-              <MainCard/>
-              <MainCard/>
+              <MainCard/> */}
             </div>
         </div>
     </>

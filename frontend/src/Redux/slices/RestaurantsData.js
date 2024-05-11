@@ -1,12 +1,13 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 export const restaurantDataSlice = createSlice({
-    name:'restaurantData',
+    name:'RestaurantsData',
     initialState: null,
     reducers:{
         setRestaurantData:(state, action)=>{
-            state = action.payload;
-            // console.log(state)
+            state = action.payload
+            return state;
+            // return action.payload;
         }
     }
 })

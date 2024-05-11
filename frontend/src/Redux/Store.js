@@ -4,7 +4,7 @@ import  restaurantDataSlice  from './slices/RestaurantsData'
 
 export const store = configureStore({
     reducer:{
-        userlocation : locationSlice,
-        restaurantsData : restaurantDataSlice,
+        UserLocation : locationSlice,
+        RestaurantsData : restaurantDataSlice,
     },
 })

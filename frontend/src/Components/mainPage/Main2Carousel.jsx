@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import CarouselCard2 from '../cards/CarouselCard2'
+import { useSelector } from "react-redux";
 
 function Main2Carousel() {
   const Carousel2Control = useRef(null);
@@ -12,7 +13,10 @@ function Main2Carousel() {
     if (Carousel2Control.current) Carousel2Control.current.scrollLeft += 200;
   };
 
+  const restaurantData = useSelector(state => state.RestaurantsData);
+
   return (
+    
     <>
       <div className="p-10 flex justify-between">
         <div className="font-bold text-xl">
@@ -31,18 +35,12 @@ function Main2Carousel() {
         className="flex overflow-x-hidden scroll-smooth"
         ref={Carousel2Control}
       >
-        <CarouselCard2 />
-        <CarouselCard2 />
-        <CarouselCard2 />
-        <CarouselCard2 />
-        <CarouselCard2 />
-        <CarouselCard2 />
-        <CarouselCard2 />
-        <CarouselCard2 />
-        <CarouselCard2 />
-        <CarouselCard2 />
-        <CarouselCard2 />
-        <CarouselCard2 />
+        {
+          restaurantData &&
+          restaurantData.map((res)=>(
+            <CarouselCard2 key={res.info.id} resName={res.info.name} resRating={res.info.avgRating}/> 
+          ))
+        } 
       </div>
     </>
   );

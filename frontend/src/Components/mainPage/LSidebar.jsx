@@ -4,14 +4,13 @@ import { setuserlocation } from "../../Redux/slices/UserLocation";
 import axios from 'axios';
 import { setRestaurantData } from "../../Redux/slices/RestaurantsData";
 
-
 const LSidebar = ({ isOpen, isClose }) => {
   const dispatch = useDispatch();
+
   const getLocationData = async(latitude, longitude) =>{
     try{
-      console.log(latitude, longitude);
-      const response = await axios.get(`https://www.swiggy.com/mapi/homepage/getCards?lat=${latitude}&lng=${longitude}`)
-      // console.log(response.data.data.success.cards[1].gridWidget.gridElements.infoWithStyle.restaurants);
+      // console.log(latitude.toFixed(5), longitude.toFixed(5));
+      const response = await axios.get(`https://www.swiggy.com/mapi/homepage/getCards?lat=${latitude.toFixed(5)}&lng=${longitude.toFixed(5)}`)
       dispatch(setRestaurantData(response.data.data.success.cards[1].gridWidget.gridElements.infoWithStyle.restaurants));
     }
     catch(err){
