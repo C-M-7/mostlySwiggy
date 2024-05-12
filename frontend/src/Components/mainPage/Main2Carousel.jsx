@@ -13,8 +13,6 @@ function Main2Carousel() {
     if (Carousel2Control.current) Carousel2Control.current.scrollLeft += 200;
   };
 
-  const restaurantData = useSelector(state => state.RestaurantsData);
-
   return (
     
     <>
@@ -35,12 +33,12 @@ function Main2Carousel() {
         className="flex overflow-x-hidden scroll-smooth"
         ref={Carousel2Control}
       >
-        {
+        {/* {
           restaurantData &&
           restaurantData.map((res)=>(
             <CarouselCard2 key={res.info.id} resName={res.info.name} resRating={res.info.avgRating}/> 
           ))
-        } 
+        }  */}
       </div>
     </>
   );

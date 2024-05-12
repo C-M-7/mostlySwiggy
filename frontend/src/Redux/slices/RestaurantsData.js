@@ -7,7 +7,6 @@ export const restaurantDataSlice = createSlice({
         setRestaurantData:(state, action)=>{
             state = action.payload
             return state;
-            // return action.payload;
         }
     }
 })
