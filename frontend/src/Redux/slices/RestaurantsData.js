@@ -5,7 +5,7 @@ export const restaurantDataSlice = createSlice({
     initialState: null,
     reducers:{
         setRestaurantData:(state, action)=>{
-            state = action.payload
+            state = action.payload;
             return state;
         }
     }

@@ -1,19 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import FetchLocation from "../../Config/FetchLocation";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setuserlocation } from "../../Redux/slices/UserLocation";
 import FetchData from "../../Config/FetchData";
 import { setRestaurantData } from "../../Redux/slices/RestaurantsData";
 
 const LSidebar = ({ isOpen, isClose }) => {
   const dispatch = useDispatch();
-  // const [position, setPosition] = useState(null);
   
   const getUserData = async (location) =>{
     const response = await FetchData(location);
-    console.log(response.data.success.cards);
-    // dispatch(setRestaurantData(response));
-    // isClose();
+    console.log(response);
+    dispatch(setRestaurantData(response));
+    if(response) isClose();
   }
 
   const getUserLocation = async () =>{
@@ -21,7 +20,6 @@ const LSidebar = ({ isOpen, isClose }) => {
       const location = await FetchLocation();
       console.log(location);
       dispatch(setuserlocation(location));
-      // setPosition(location);
       getUserData(location);
     }
     catch(err){

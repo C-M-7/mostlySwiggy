@@ -3,6 +3,7 @@ import CarouselCard2 from '../cards/CarouselCard2'
 import { useSelector } from "react-redux";
 
 function Main2Carousel() {
+  const restaurantData = useSelector((state) => state.RestaurantsData)
   const Carousel2Control = useRef(null);
 
   const scrollLeft = () => {
@@ -30,15 +31,15 @@ function Main2Carousel() {
         </div>
       </div>
       <div
-        className="flex overflow-x-hidden scroll-smooth"
+        className="flex overflow-x-hidden scroll-smooth gap-8"
         ref={Carousel2Control}
       >
-        {/* {
+        {
           restaurantData &&
           restaurantData.map((res)=>(
-            <CarouselCard2 key={res.info.id} resName={res.info.name} resRating={res.info.avgRating}/> 
+            <CarouselCard2 key={res.id} resName={res.name} resRating={res.avgRatingString} resCostfor2 = {res.costForTwo}/> 
           ))
-        }  */}
+        } 
       </div>
     </>
   );
