@@ -1,9 +1,9 @@
 import React from 'react'
-import MainCard from '../cards/MainCard'
-// import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
+import CarouselCard2 from '../cards/CarouselCard2';
 
 function CardStack() {
-  // const restaurantData = useSelector(state => state.RestaurantsData);
+  const restaurantData = useSelector(state => state.RestaurantsData);
 
   return (
     <>
@@ -18,32 +18,13 @@ function CardStack() {
               <button className='border border-black rounded-3xl py-2 px-4'>Filter</button>
               <button className='border border-black rounded-3xl py-2 px-4'>Filter</button>
             </div>
-            <div className='flex flex-wrap'>
-            {/* {
+            <div className='flex flex-wrap justify-center gap-20'>
+            {
               restaurantData &&
               restaurantData.map((res)=>(
-                <MainCard key={res.info.id} resName={res.info.name} resRating={res.info.avgRating}/> 
+                <CarouselCard2 key={res.id} resName={res.name} resRating={res.avgRatingString} resCostfor2 = {res.costForTwo}/> 
               ))
-            } */}
-              {/* <MainCard/>
-              <MainCard/>
-              <MainCard/>
-              <MainCard/>
-              <MainCard/>
-              <MainCard/>
-              <MainCard/>
-              <MainCard/>
-              <MainCard/>
-              <MainCard/>
-              <MainCard/>
-              <MainCard/>
-              <MainCard/>
-              <MainCard/>
-              <MainCard/>
-              <MainCard/>
-              <MainCard/>
-              <MainCard/>
-              <MainCard/> */}
+            }
             </div>
         </div>
     </>
