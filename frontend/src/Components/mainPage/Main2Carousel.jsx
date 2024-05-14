@@ -37,7 +37,7 @@ function Main2Carousel() {
         {
           restaurantData &&
           restaurantData.map((res)=>(
-            <CarouselCard2 key={res.id} resName={res.name} resRating={res.avgRatingString} resCostfor2 = {res.costForTwo}/> 
+            <CarouselCard2 key={res.id} resId = {res.id} resName={res.name} resRating={res.avgRatingString} resCostfor2 = {res.costForTwo} resImage={res.cloudinaryImageId}/> 
           ))
         } 
       </div>
