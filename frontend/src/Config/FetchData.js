@@ -79,8 +79,7 @@ async function fetchData(location) {
                 costForTwo,
             };
         });
-
-        
+        console.log("hi");
         return filteredDetails; // Returning the parsed JSON data
     } catch (error) {
         console.error('Error fetching data:', error.message);

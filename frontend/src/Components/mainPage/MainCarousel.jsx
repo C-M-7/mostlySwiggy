@@ -4,6 +4,9 @@ import {useSelector} from 'react-redux';
 
 function MainCarousel() {
   const carouselControl = useRef(null);
+  const cuisineData = useSelector((state) => state.RestaurantsCuisines);
+  console.log(cuisineData);
+  
   const carouselRight = () => {
     if (carouselControl.current) {
       carouselControl.current.scrollLeft += 200;
@@ -15,8 +18,6 @@ function MainCarousel() {
       carouselControl.current.scrollLeft -= 200;
     }
   };
-
-  // if(restaurantData) console.log(restaurantData)
 
   return (
     <>
@@ -35,18 +36,11 @@ function MainCarousel() {
         className="flex overflow-x-hidden pt-6 scroll-smooth"
         ref={carouselControl}
       >
-         
-        <CarouselCard cName cPic />
-        <CarouselCard cName cPic />
-        <CarouselCard cName cPic />
-        <CarouselCard cName cPic />
-        <CarouselCard cName cPic />
-        <CarouselCard cName cPic />
-        <CarouselCard cName cPic />
-        <CarouselCard cName cPic />
-        <CarouselCard cName cPic />
-        <CarouselCard cName cPic />
-        <CarouselCard cName cPic />
+       {cuisineData &&
+        cuisineData.map((cuisine) =>( 
+          <CarouselCard key={cuisine} cuisineName = {cuisine} />
+        ))
+       }  
       </div>
     </>
   );

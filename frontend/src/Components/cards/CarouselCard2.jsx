@@ -5,10 +5,10 @@ function CarouselCard2({resId,  resName, resRating, resCostfor2, resImage}) {
   return (
     <>
         <Link to={`/restaurant/${resId}`} className=' h-auto hover:scale-95'>
-          <div className='w-48 h-auto border border-black rounded-md flex flex-col items-center'>
+          <div className='w-48 h-auto shadow-md rounded-md flex flex-col items-center'>
             
             <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${resImage}`}
-            className='w-[100%] h-[40%]'
+            className='w-[100%] h-[40%] rounded-md'
             alt='Restaurant'
             />
             <div className='px-4'>

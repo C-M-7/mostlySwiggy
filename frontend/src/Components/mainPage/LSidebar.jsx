@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { setuserlocation } from "../../Redux/slices/UserLocation";
 import FetchData from "../../Config/FetchData";
 import { setRestaurantData } from "../../Redux/slices/RestaurantsData";
+import { setRestaurantCuisines } from "../../Redux/slices/RestaurantsCuisines";
 
 const LSidebar = ({ isOpen, isClose }) => {
   const dispatch = useDispatch();
@@ -11,6 +12,14 @@ const LSidebar = ({ isOpen, isClose }) => {
   const getUserData = async (location) =>{
     const response = await FetchData(location);
     console.log(response);
+
+    // Set up for storing different cuisines in redux
+    const cuisineSet = new Set();
+    response.map((res)=>res.cuisines.map((cus)=> cuisineSet.add(cus)));
+    const cuisineArr = [...cuisineSet];
+    // console.log(cuisineJson);
+
+    dispatch(setRestaurantCuisines(cuisineArr));
     dispatch(setRestaurantData(response));
     if(response) isClose();
   }

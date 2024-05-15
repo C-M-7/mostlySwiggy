@@ -34,7 +34,7 @@ const router = createBrowserRouter([
     element: <Search/>
   },
   {
-    path:'/fooditem',
+    path:'/fooditem/:cuisineName',
     element: <FoodItem/>
   },
   {
