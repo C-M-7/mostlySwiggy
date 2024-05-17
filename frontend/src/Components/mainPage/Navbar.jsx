@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import RSidebar from "./RSidebar";
 import { Link } from "react-router-dom";
 import LSidebar from "./LSidebar";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [LsidebarOpen, setLsidebarOpen] = useState(false);
