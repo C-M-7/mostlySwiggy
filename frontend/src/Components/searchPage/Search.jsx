@@ -1,23 +1,33 @@
 import React, { useState } from 'react'
 import Navbar from '../mainPage/Navbar'
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function Search() {
+  const [routes, setRoutes] = useState('res');
   const [searchTerm , setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const data = useSelector((state) => state.RestaurantsData);
+  const resData = useSelector((state) => state.RestaurantsData);
+  const cusData = useSelector((state) => state.RestaurantsCuisines);
 
+  const cusRoutes = () => setRoutes('cus');
+  const resRoutes = () => setRoutes('res');
+  
   const handleChange = (event) =>{
     const term = event.target.value;
     setSearchTerm(term);
-    const cuisines = data.map(cui => cui.cuisines.filter(item=>(
-      item.toLowerCase() === term.toLowerCase()
-    )));
-    console.log(cuisines);
-    const names = data.filter(n=>(n.name.toLowerCase() === term.toLowerCase()));
-    console.log(names);
-    const result = cuisines.concat(names);
-    setSearchResults(result);
+    if(term.trim() === '') setSearchResults([]);
+    else{
+      setTimeout(()=>{
+        const res = resData.filter((r)=>r.name.toLowerCase().startsWith(term.toLowerCase())).map(r => [r.name, r.id]);
+        const cui = cusData.filter((c)=> c.toLowerCase().startsWith(term.toLowerCase()));
+        let result;
+        if(routes === 'res') result = res;
+        else result = cui;
+        console.log(result);
+        setSearchResults(result);
+      }, 1000);
+    }
   }
 
   return (
@@ -27,13 +37,31 @@ function Search() {
         <div className='mt-40 w-[50%]'>
           <input className='border border-black pl-2 w-[100%] h-10 rounded-sm' type='text' placeholder='Search' onChange={handleChange} value={searchTerm}/> 
         </div>
-        <div className='w-[50%] h-44 mt-10 border border-black flex flex-col overflow-y-auto scroll-smooth'>
+        <div>
+          <button className='m-4 border border-black ' onClick={resRoutes}>Restaurants</button>
+          <button className='m-4 border border-black' onClick={cusRoutes}>Cuisines</button>
+        </div>
+        <div className='w-[50%] h-44 mt-6 border border-black flex flex-col overflow-y-auto scroll-smooth'>
           <ul>
             {
-              searchResults &&
-              searchResults.map((item, index)=>(
-                <li key={index}>{item}</li>
-              ))
+              routes === 'res' ?
+              (
+                searchResults && 
+                searchResults.map((item)=>(
+                  <Link to={`/restaurant/${item[1]}`}>
+                    <li className='border border-black m-2 hover:scale-95' key={item[1]}>{item[0]}</li>
+                  </Link>
+                ))
+              )
+              :
+              (
+                searchResults && 
+                searchResults.map((item, index)=>(
+                  <Link to={`/fooditem/${item}`}>
+                    <li className='border border-black m-2 hover:scale-95' key={index}>{item}</li>
+                  </Link>
+                ))
+              )
             }
           </ul>
         </div>
