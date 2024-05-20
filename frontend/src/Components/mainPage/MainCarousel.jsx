@@ -5,7 +5,6 @@ import {useSelector} from 'react-redux';
 function MainCarousel() {
   const carouselControl = useRef(null);
   const cuisineData = useSelector((state) => state.RestaurantsCuisines);
-  console.log(cuisineData);
   
   const carouselRight = () => {
     if (carouselControl.current) {
@@ -34,7 +33,7 @@ function MainCarousel() {
       </div>
       <div
         className="flex overflow-x-hidden pt-6 scroll-smooth"
-        ref={carouselControl}
+         ref={carouselControl}
       >
        {cuisineData &&
         cuisineData.map((cuisine) =>( 
