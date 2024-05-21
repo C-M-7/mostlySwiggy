@@ -6,7 +6,7 @@ import Accordion from './Accordion';
 function Restaurant() {
   const {id} = useParams();
   const[headerData, setheaderData] = useState('');
-  const[menuData, setMenuData] = useState('');
+  const[menuData, setMenuData] = useState([]);
   const[footerData, setfooterData] = useState('');
 
 
@@ -40,9 +40,9 @@ function Restaurant() {
       setMenuData(menu || {});
       setfooterData(footer || {});
       
-      // console.log("header ", header);  
-      // console.log("menu ", menu);
-      // console.log("footer ", footer);  
+      console.log("header ", header);  
+      console.log("menu ", menu);
+      console.log("footer ", footer);  
 
     }
     catch(error){
@@ -63,8 +63,36 @@ function Restaurant() {
               <div>{headerData.cuisines}</div>
               <div>{headerData.costForTwoMessage}</div>
             </div>
-            <div className='mx-[45%] font-bold text-2xl'>MENU</div>
-            <Accordion/>
+            <div className='mx-[45%] mb-5 font-bold text-2xl'>MENU</div>
+            {
+              menuData.map((item, index)=>{
+                const card = item.card?.card;
+                if(!card?.title) return null;
+                if(card?.itemCards){
+                  return(
+                    <Accordion
+                      key={index}
+                      index={index}
+                      data={card}
+                      resturantId = {id}
+                      restaurantData={{
+                        name : headerData.name,
+                        area : headerData.locality,
+                        cuisines : headerData.cuisines,
+                      }}
+                    />
+                  );
+                }
+              })
+            }
+          <div className='flex flex-col border-4 border-black bg-gray-300 mt-10'>
+            <span className='font-bold text-2xl'>Footer</span>
+            <div>{footerData.area}</div>
+            <div>{footerData.completeAddress}</div>
+            <div>{footerData.text}</div>
+            <div></div>
+            <div></div>
+          </div>
           </div>
         </div>
     </>
