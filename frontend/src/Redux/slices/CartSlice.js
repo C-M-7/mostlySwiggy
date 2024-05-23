@@ -1,23 +1,28 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { enableMapSet } from 'immer'; 
-
-enableMapSet();
 
 export const cartDataSlice = createSlice({
     name : 'CartSlice',
-    initialState: new Map(),
+    initialState: [],
     reducers:{
         setCartSlice:(state, action)=>{
-            const item = action.payload;
-            if(state.has(item)) state.set(item, state.get(item)+1);
-            else state.set(item, 1);
-            return state
+            // console.log(action.payload);
+            const index = state.findIndex((item) => item.data.dishName === action.payload.dishName);
+            console.log(index);
+            if(index !== -1){
+                state[index].quantity = state[index].quantity+1;
+            }
+            else{
+                state.push({data : action.payload, quantity : 1});
+            }
+            return state;
         },
         removeCartSlice:(state, action)=>{
-            const item = action.payload;
-            const quantity = state.get(item);
-            if(quantity > 1) state.set(item, quantity-1);
-            else state.delete(item);
+            const index = state.findIndex((item) => item.data.dishName === action.payload.dishName);
+            if(index !== -1){
+                const q = state[index].quantity;
+                if(q > 1) state[index].quantity--;
+                else state.splice(index, 1);
+            }
             return state;
         }
     }

@@ -1,9 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import CartItems from './CartItems';
-import { enableMapSet } from 'immer'; 
-
-enableMapSet();
 
 function Cart() {
   const cartData = useSelector((state) => state.CartSlice);
@@ -13,9 +10,9 @@ function Cart() {
       <div className='flex flex-col items-center'>
         {
           cartData &&
-          Array.from(cartData.entries()).map(([value, key])=>{
+          cartData.map((item, index)=>{
             return(
-              <CartItems data={key} quantity={value}/>
+              <CartItems key={index} data={item.data} quantity={item.quantity}/>
             );
           })
         }

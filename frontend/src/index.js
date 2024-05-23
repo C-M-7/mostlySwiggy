@@ -15,6 +15,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
+import { enableMapSet } from 'immer';
+enableMapSet();
 
 const router = createBrowserRouter([
   {
