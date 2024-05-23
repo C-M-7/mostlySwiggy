@@ -1,7 +1,18 @@
-import React from 'react'
+import React from 'react';
+import {useDispatch} from 'react-redux';
+import { setCartSlice } from '../../Redux/slices/CartSlice';
 
 // Add the inStock effect also
-function AccordionItem({dishData}) {
+function AccordionItem({dishData, resturantId, restaurantData}) {
+  const dispatch = useDispatch();
+  const cart = {
+    dishName : dishData.name,
+    dishPrice : dishData.finalPrice,
+    dishVeg : dishData.isVeg,
+    resId : resturantId,
+    resName : restaurantData.name
+  }
+  
   return (
     <>
         <div className='flex justify-between my-3 border border-black'>
@@ -17,7 +28,7 @@ function AccordionItem({dishData}) {
                   <img alt='dishImage' className='w-20 h-20' src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${dishData.imageId}`}/>
                 </div>
                 <div>
-                  <button className='z-10'>ADD</button>
+                  <button className='z-10' onClick={() => dispatch(setCartSlice(cart))}>ADD</button>
                 </div>
             </div>
         </div>

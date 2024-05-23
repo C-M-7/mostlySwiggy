@@ -38,7 +38,7 @@ const LSidebar = ({ isOpen, isClose }) => {
 
   return (
     <>
-        <div className={`h-screen w-[40%] z-20 shadow-lg top-0 left-0 fixed bg-white flex-col transition-transform duration-300  ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className={`h-screen w-[40%] z-40 shadow-lg top-0 left-0 fixed bg-white flex-col transition-transform duration-300  ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
           <div className="h-[15%] mx-10 mt-10 ">
             <div onClick={isClose} className="cursor-pointer hover:text-orange-400">Close</div>
             <div>
@@ -50,7 +50,7 @@ const LSidebar = ({ isOpen, isClose }) => {
             </div>
           </div>
           <div>
-            <button className="mx-10 hover:scale-105 duration-200 border shadow-md w-[40%] text-white bg-orange-400 p-2" onClick={getUserLocation}>Get my current Location </button>
+            <button className="mx-10 hover:scale-105 duration-200 border shadow-md w-[40%] text-white bg-orange-400 p-2 " onClick={getUserLocation}>Get my current Location </button>
           </div>
         </div>
     </>

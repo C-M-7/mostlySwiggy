@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import AccordionItem from './AccordionItem';
 
-function Accordion({data}) {
+function Accordion({data, resturantId, restaurantData}) {
   const [isOpen, setIsOpen] = useState(false);
   console.log(data.title);
   
@@ -21,6 +21,8 @@ function Accordion({data}) {
                         key={dish.id} 
                         index={index}
                         dishData={dish}
+                        resturantId = {resturantId}
+                        restaurantData= {restaurantData}
                       />
                     );
                   })
