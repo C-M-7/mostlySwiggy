@@ -9,6 +9,7 @@ function AccordionItem({dishData, resturantId, restaurantData}) {
     dishName : dishData.name,
     dishPrice : dishData.finalPrice,
     dishVeg : dishData.isVeg,
+    dishImage : dishData.imageId,
     resId : resturantId,
     resName : restaurantData.name
   }
