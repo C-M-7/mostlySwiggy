@@ -6,10 +6,12 @@ import MainCarousel from "./Components/mainPage/MainCarousel";
 import MainOptions2 from "./Components/mainPage/MainOption2";
 import MainOptions1 from "./Components/mainPage/MainOptions1";
 import Navbar from "./Components/mainPage/Navbar";
+import {Toaster} from 'sonner'
 
 function App() {
   return (
     <div className="App">
+      <Toaster className="z-[999]" position="bottom-center"/>
       <Navbar />
       <div className="px-[15%] pt-20">
         <MainCarousel />

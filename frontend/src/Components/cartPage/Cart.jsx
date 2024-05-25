@@ -1,11 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import CartItems from './CartItems';
 
 function Cart() {
   const cartData = useSelector((state) => state.CartSlice);
+  console.log(cartData);
+  let totalP = 0, totalQ = 0;
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
+
+  // useEffect(()=>{
+    cartData.map(item =>  (totalQ += item.quantity, totalP = item.data.dishPrice * item.quantity))
+    setTotalPrice(totalP);
+    setTotalQuantity(totalQ);
+
+
 
   return (
     <>
@@ -15,10 +24,6 @@ function Cart() {
           {
             cartData &&
             cartData.map((item, index)=>{
-              const totalprice = item.data.dishPrice;
-              setTotalPrice(totalPrice+totalprice);
-              const totalquantity = item.quantity;
-              setTotalQuantity(totalQuantity+totalquantity);
               return(
                 <CartItems key={index} data={item.data} quantity={item.quantity}/>
               );
@@ -30,7 +35,7 @@ function Cart() {
         <div className='bg-black text-white p-4'>
           <div className='flex justify-between space-x-60'>
             <div>Total Price</div>
-            <div>{totalPrice}</div>
+            <div>{totalPrice ? totalPrice : '___'}</div>
           </div>
           <div className='flex justify-between'>
             <div>Quantity</div>

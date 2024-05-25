@@ -1,17 +1,23 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import { setCartSlice } from '../../Redux/slices/CartSlice';
+import {toast} from 'sonner';
 
 // Add the inStock effect also
 function AccordionItem({dishData, resturantId, restaurantData}) {
   const dispatch = useDispatch();
   const cart = {
-    dishName : dishData.name,
+    dishName : dishData.name, 
     dishPrice : dishData.finalPrice,
     dishVeg : dishData.isVeg,
     dishImage : dishData.imageId,
     resId : resturantId,
     resName : restaurantData.name
+  }
+
+  const sendToCart = () =>{
+    dispatch(setCartSlice(cart));
+    toast("Item added to cart!");
   }
   
   return (
@@ -29,7 +35,7 @@ function AccordionItem({dishData, resturantId, restaurantData}) {
                   <img alt='dishImage' className='w-20 h-20' src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${dishData.imageId}`}/>
                 </div>
                 <div>
-                  <button className='z-10' onClick={() => dispatch(setCartSlice(cart))}>ADD</button>
+                  <button className='z-10' type='button' onClick={sendToCart}>ADD</button>
                 </div>
             </div>
         </div>
