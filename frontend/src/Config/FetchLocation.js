@@ -1,3 +1,5 @@
+import NoLocationPage from "../Components/mainPage/NoLocationPage";
+
 const FetchLocation = () =>{
   return new Promise((resolve, reject)=>{
     if(navigator.geolocation){
@@ -11,6 +13,7 @@ const FetchLocation = () =>{
         }
       );
     }else{
+      <NoLocationPage/>
       reject(new Error("Geolocation is not supported on you browser!"));
     }
   })

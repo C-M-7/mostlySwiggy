@@ -5,12 +5,14 @@ import { setuserlocation } from "../../Redux/slices/UserLocation";
 import FetchData from "../../Config/FetchData";
 import { setRestaurantData } from "../../Redux/slices/RestaurantsData";
 import { setRestaurantCuisines } from "../../Redux/slices/RestaurantsCuisines";
+import { toast } from "sonner";
 
 const LSidebar = ({ isOpen, isClose }) => {
   const dispatch = useDispatch();
   
   const getUserData = async (location) =>{
     const response = await FetchData(location);
+    toast.info('Your Location is in use!',{style:{background: 'yellow', fontSize: '17px'}})
     console.log(response);
 
     // Set up for storing different cuisines in redux
@@ -29,9 +31,11 @@ const LSidebar = ({ isOpen, isClose }) => {
       const location = await FetchLocation();
       console.log(location);
       dispatch(setuserlocation(location));
+      
       getUserData(location);
     }
     catch(err){
+      toast.error('Unable to fetch your location!',{style:{background: 'red', fontSize: '17px'}});
       console.error(err.message);
     }
   }

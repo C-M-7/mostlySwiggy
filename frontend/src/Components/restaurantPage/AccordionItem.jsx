@@ -17,7 +17,7 @@ function AccordionItem({dishData, resturantId, restaurantData}) {
 
   const sendToCart = () =>{
     dispatch(setCartSlice(cart));
-    toast("Item added to cart!");
+    toast.success("Item added to cart!",{style:{background: 'lightgreen', fontSize: '17px'}});
   }
   
   return (

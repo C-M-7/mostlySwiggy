@@ -34,7 +34,11 @@ function Search() {
     <>
         <Navbar/>
         <div className='flex flex-col items-center'>
-        <div className='mt-40 w-[50%]'>
+        <div className='flex mt-28'>
+          <div>Back</div>
+          <div>Search Page</div>
+        </div>
+          <div className='mt-12 w-[50%]'>
           <input className='border border-black pl-2 w-[100%] h-10 rounded-sm' type='text' placeholder='Search' onChange={handleChange} value={searchTerm}/> 
         </div>
         <div>

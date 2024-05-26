@@ -7,16 +7,13 @@ import Cart from './Components/cartPage/Cart';
 import Search from './Components/searchPage/Search';
 import FoodItem from './Components/fooditemPage/FoodItem';
 import Restaurant from './Components/restaurantPage/Restaurant';
-import SwiggyCorp from './Components/swiggyCorp/SwiggyCorp';
-import Offers from './Components/offersPage/Offers';
 import {Provider} from 'react-redux';
 import { store } from './Redux/Store';
 import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
-import { enableMapSet } from 'immer';
-enableMapSet();
+import {Toaster} from 'sonner';
 
 const router = createBrowserRouter([
   {
@@ -43,19 +40,12 @@ const router = createBrowserRouter([
     path:'/restaurant/:id',
     element:<Restaurant/>
   },
-  {
-    path:'/swiggycorporate',
-    element: <SwiggyCorp/>
-  },
-  {
-    path : '/offers',
-    element: <Offers/>
-  }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
+          <Toaster className="z-50" position="bottom-center"/>
     <RouterProvider router={router} />
   </Provider>
 );
