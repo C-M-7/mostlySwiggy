@@ -10,16 +10,15 @@ import Navbar from "./Components/mainPage/Navbar";
 import NoLocationPage from "./Components/mainPage/NoLocationPage";
 // import { useState } from "react";
 
+
 function App() {
   // const [location, setLocation] = useState({});
-  const userLocation = useSelector((state) => state.UserLocation);
-  console.log(userLocation);
+  const resData = useSelector((state) => state.RestaurantsData);
   return (
     <div className="App">
       <Navbar />
       {
-        (userLocation.latitude===null && 
-        userLocation.longitude === null)
+        resData === null
         ?
         <NoLocationPage/>
         :

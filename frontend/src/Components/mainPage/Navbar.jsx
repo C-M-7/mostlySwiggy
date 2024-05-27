@@ -11,6 +11,7 @@ const Navbar = () => {
 
   return(
     <>
+    <div >
     <LSidebar isOpen={LsidebarOpen} isClose={toggleLSideBar}/>
     <RSidebar isOpen={RsidebarOpen} isClose={toggleRSideBar}/>
     {
@@ -32,6 +33,7 @@ const Navbar = () => {
         <div className="navfeatures py-6 cursor-pointer  hover:text-orange-400" onClick={toggleRSideBar}>SignIn</div>
         <Link to='/cart' className="navfeatures py-6 cursor-pointer  hover:text-orange-400">Cart</Link>
       </div>
+    </div>
     </div>
   </>
   )
