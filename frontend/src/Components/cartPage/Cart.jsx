@@ -5,14 +5,14 @@ import CartItems from './CartItems';
 function Cart() {
   const cartData = useSelector((state) => state.CartSlice);
   console.log(cartData);
-  let totalP = 0, totalQ = 0;
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [totalQuantity, setTotalQuantity] = useState(0);
+  // let totalP = 0, totalQ = 0;
+  // const [totalPrice, setTotalPrice] = useState(0);
+  // const [totalQuantity, setTotalQuantity] = useState(0);
 
   // useEffect(()=>{
-    cartData.map(item =>  (totalQ += item.quantity, totalP = item.data.dishPrice * item.quantity))
-    setTotalPrice(totalP);
-    setTotalQuantity(totalQ);
+    // cartData.map(item =>  (totalQ += item.quantity, totalP = item.data.dishPrice * item.quantity))
+    // setTotalPrice(totalP);
+    // setTotalQuantity(totalQ);
 
 
 
@@ -30,21 +30,21 @@ function Cart() {
             })
           }
         </div>
-        {
-          totalQuantity!== 0 ?
-        <div className='bg-black text-white p-4'>
-          <div className='flex justify-between space-x-60'>
-            <div>Total Price</div>
-            <div>{totalPrice ? totalPrice : '___'}</div>
-          </div>
-          <div className='flex justify-between'>
-            <div>Quantity</div>
-            <div>{totalQuantity}</div>
-          </div>
-        </div>
-        :
+        {/* {
+        //   totalQuantity!== 0 ?
+        // <div className='bg-black text-white p-4'>
+        //   <div className='flex justify-between space-x-60'>
+        //     <div>Total Price</div>
+        //     <div>{totalPrice ? totalPrice : '___'}</div>
+        //   </div>
+        //   <div className='flex justify-between'>
+        //     <div>Quantity</div>
+        //     <div>{totalQuantity}</div>
+        //   </div>
+        // </div>
+        // :
         <div>Your cart is empty</div>
-        } 
+        }  */}
       </div>
     </>
   )

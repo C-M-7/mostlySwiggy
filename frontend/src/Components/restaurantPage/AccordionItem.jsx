@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setCartSlice } from "../../Redux/slices/CartSlice";
+import React, { useState } from "react";
+import { useDispatch} from "react-redux";
+import { setCartSlice, removeCartSlice } from "../../Redux/slices/CartSlice";
 import { toast } from "sonner";
 
 // Add the inStock effect also
@@ -17,14 +17,25 @@ function AccordionItem({ dishData, resturantId, restaurantData }) {
     resName: restaurantData.name,
   };
 
-  const sendToCart = () => {
-    if (!cartItems.get(dishData.name)) {
-      setCartItems(cartItems.set(dishData.name, 1));
-      console.log(cartItems);
+  const removeFromCart = () =>{
+    const newCartItems = new Map(cartItems);
+    if (newCartItems.get(dishData.name) <= 1) {
+      newCartItems.delete(dishData.name)
     } else {
-      setCartItems(cartItems.set(dishData.name, cartItems.get(dishData.name) + 1));
-      console.log(cartItems);
+      newCartItems.set(dishData.name, newCartItems.get(dishData.name) - 1);
     }
+    setCartItems(newCartItems);
+    dispatch(removeCartSlice(cart));
+  }
+
+  const sendToCart = () => {
+    const newCartItems = new Map(cartItems);
+    if (!newCartItems.has(dishData.name)) {
+      newCartItems.set(dishData.name, 1);
+    } else {
+      newCartItems.set(dishData.name, newCartItems.get(dishData.name) + 1);
+    }
+    setCartItems(newCartItems);
     dispatch(setCartSlice(cart));
     toast.success("Item added to cart!", {
       style: { background: "lightgreen", fontSize: "17px" },
@@ -51,9 +62,9 @@ function AccordionItem({ dishData, resturantId, restaurantData }) {
           </div>
           {cartItems.size !== 0 && cartItems.get(dishData.name) !== undefined ? (
             <div className="flex justify-between space-x-5">
-              <button>+</button>
+              <button onClick={sendToCart}>+</button>
               <div>{cartItems.get(dishData.name)}</div>
-              <button>-</button>
+              <button onClick={removeFromCart}>-</button>
             </div>
           ) : (
             <div>

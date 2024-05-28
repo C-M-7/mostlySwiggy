@@ -5,7 +5,7 @@ export const cartDataSlice = createSlice({
     initialState: [],
     reducers:{
         setCartSlice:(state, action)=>{
-            // console.log(action.payload);
+            
             const index = state.findIndex((item) => item.data.dishName === action.payload.dishName);
             
             if(index !== -1){
