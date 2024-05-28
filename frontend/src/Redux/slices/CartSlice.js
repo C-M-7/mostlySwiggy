@@ -7,7 +7,7 @@ export const cartDataSlice = createSlice({
         setCartSlice:(state, action)=>{
             // console.log(action.payload);
             const index = state.findIndex((item) => item.data.dishName === action.payload.dishName);
-            console.log(index);
+            
             if(index !== -1){
                 state[index].quantity = state[index].quantity+1;
             }
