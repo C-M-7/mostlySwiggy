@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import Navbar from '../mainPage/Navbar';
 import Accordion from './Accordion';
 import Loader from '../loader/Loader';
+import NoRestaurants from '../loader/NoRestaurants';
 
 function Restaurant() {
   const {id} = useParams();
@@ -57,7 +58,9 @@ function Restaurant() {
         {
           loader 
           ?
-          <Loader/>
+          <div>
+              <Loader/>
+          </div>
           :
           <div>
           <Navbar/>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import CartItems from './CartItems';
+import EmptyCart from '../loader/EmptyCart';
 
 function Cart() {
   const [price, setPrice] = useState(0);
@@ -18,7 +19,7 @@ function Cart() {
   return (
     <>
       <div className='flex flex-col items-center' >
-        <div className='text-3xl font-bold p-10'>Your cart</div>
+        {/* <div className='text-3xl font-bold p-10'>Your cart</div> */}
           <div>
           {
             cartData &&
@@ -43,7 +44,9 @@ function Cart() {
             </div>
           </div>
           :
-          <div>Your cart is empty</div>
+          <div>
+            <EmptyCart/>
+          </div>
         }
       </div>
     </>
