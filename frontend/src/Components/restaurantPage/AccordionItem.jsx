@@ -1,11 +1,19 @@
-import React, { useState } from "react";
-import { useDispatch} from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector} from "react-redux";
 import { setCartSlice, removeCartSlice } from "../../Redux/slices/CartSlice";
 import { toast } from "sonner";
 
 // Add the inStock effect also
 function AccordionItem({ dishData, resturantId, restaurantData }) {
   const [cartItems, setCartItems] = useState(new Map());
+  const cartyy = useSelector((state) => state.CartSlice);
+
+  useEffect(()=>{
+    const mapItems = new Map();
+    cartyy.map((item)=> mapItems.set(item.data.dishName, item.quantity));
+    setCartItems(mapItems);
+  },[cartyy])
+
   const dispatch = useDispatch();
 
   const cart = {
@@ -18,24 +26,10 @@ function AccordionItem({ dishData, resturantId, restaurantData }) {
   };
 
   const removeFromCart = () =>{
-    const newCartItems = new Map(cartItems);
-    if (newCartItems.get(dishData.name) <= 1) {
-      newCartItems.delete(dishData.name)
-    } else {
-      newCartItems.set(dishData.name, newCartItems.get(dishData.name) - 1);
-    }
-    setCartItems(newCartItems);
     dispatch(removeCartSlice(cart));
   }
 
   const sendToCart = () => {
-    const newCartItems = new Map(cartItems);
-    if (!newCartItems.has(dishData.name)) {
-      newCartItems.set(dishData.name, 1);
-    } else {
-      newCartItems.set(dishData.name, newCartItems.get(dishData.name) + 1);
-    }
-    setCartItems(newCartItems);
     dispatch(setCartSlice(cart));
     toast.success("Item added to cart!", {
       style: { background: "lightgreen", fontSize: "17px" },

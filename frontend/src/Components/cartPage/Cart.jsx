@@ -3,18 +3,17 @@ import { useSelector } from 'react-redux'
 import CartItems from './CartItems';
 
 function Cart() {
+  const [price, setPrice] = useState(0);
+  const [quantity, setQuantity] = useState(0);
   const cartData = useSelector((state) => state.CartSlice);
   console.log(cartData);
-  // let totalP = 0, totalQ = 0;
-  // const [totalPrice, setTotalPrice] = useState(0);
-  // const [totalQuantity, setTotalQuantity] = useState(0);
 
-  // useEffect(()=>{
-    // cartData.map(item =>  (totalQ += item.quantity, totalP = item.data.dishPrice * item.quantity))
-    // setTotalPrice(totalP);
-    // setTotalQuantity(totalQ);
-
-
+  useEffect(()=>{
+    let totalprice = 0, totalquantity = 0;
+    cartData.map((item) => (item.data.dishPrice !== undefined ? totalprice = item.data.dishPrice*item.quantity : totalprice += 0, totalquantity += item.quantity));
+    setQuantity(totalquantity);
+    setPrice(totalprice);
+  }, [cartData])
 
   return (
     <>
@@ -30,21 +29,22 @@ function Cart() {
             })
           }
         </div>
-        {/* {
-        //   totalQuantity!== 0 ?
-        // <div className='bg-black text-white p-4'>
-        //   <div className='flex justify-between space-x-60'>
-        //     <div>Total Price</div>
-        //     <div>{totalPrice ? totalPrice : '___'}</div>
-        //   </div>
-        //   <div className='flex justify-between'>
-        //     <div>Quantity</div>
-        //     <div>{totalQuantity}</div>
-        //   </div>
-        // </div>
-        // :
-        <div>Your cart is empty</div>
-        }  */}
+        {
+          quantity !== 0
+          ?
+          <div className='flex flex-col items-center'>
+            <div className='flex justify-between space-x-40'>
+              <div>Price</div>
+              <div>{price/100}</div>
+            </div>
+            <div className='flex justify-between space-x-40'>
+              <div>Quantity</div>
+              <div>{quantity}</div>
+            </div>
+          </div>
+          :
+          <div>Your cart is empty</div>
+        }
       </div>
     </>
   )
