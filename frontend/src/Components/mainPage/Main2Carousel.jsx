@@ -19,8 +19,8 @@ function Main2Carousel() {
   return (
     <>
       <div className="p-8 flex justify-between">
-        <div className="font-bold text-xl">
-          Top restaurant chains in YOUR_LOCATION
+        <div className="font-bold text-2xl">
+          Top restaurant near you
         </div>
         <div className="space-x-2">
           <button onClick={scrollLeft} className="hover:text-orange-400">
@@ -32,7 +32,7 @@ function Main2Carousel() {
         </div>
       </div>
       <div
-        className="flex overflow-x-hidden scroll-smooth gap-8"
+        className="flex overflow-x-auto scrollbar-hidden scroll-smooth gap-8 h-max"
         ref={Carousel2Control}
       >
         {restaurantData &&
