@@ -70,7 +70,7 @@ function Search() {
                 searchResults.map((item) => (
                   <Link to={`/restaurant/${item[1]}`}>
                     <li
-                      className="border-2 flex justify-between rounded-md m-2 hover:bg-orange-400 hover:text-white transition shadow-md p-2"
+                      className="border-2 flex justify-between rounded-md m-2 hover:bg-orange-400 hover:text-white transition shadow-md p-4"
                       key={item[1]}
                     >
                       <div className="flex flex-col">

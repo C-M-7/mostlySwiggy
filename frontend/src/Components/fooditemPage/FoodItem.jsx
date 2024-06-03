@@ -37,8 +37,8 @@ function FoodItem() {
 
         <div>
           <Navbar className=''/>
-          <h1 className='pt-28 text-5xl ml-28 font-bold'>{cuisineName}</h1>
-          <h1 className='ml-28 mt-2 text-gray-500'>Enjoy the restaurants with best {cuisineName} cuisines</h1>
+          <h1 className='pt-28 text-5xl ml-28 font-bold'>Let's have some <span className='text-orange-400'>{cuisineName}!</span></h1>
+          <h1 className='ml-28 mt-2 text-gray-500'>Browse from the restaurants with best {cuisineName}</h1>
           <div className='flex space-x-5 pt-6 ml-28'>
               <button className='border border-black rounded-3xl py-2 px-4 hover:scale-95'>Filter</button>
               <button className='border border-black rounded-3xl py-2 px-4 hover:scale-95' >Filter</button>

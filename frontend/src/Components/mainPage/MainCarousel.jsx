@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import CarouselCard from "../cards/CarouselCard";
 import {useSelector} from 'react-redux';
+import rightArrow from '../../Utils/arrow-button-right.svg'
+import leftArrow from '../../Utils/arrow-button-left.svg'
 
 function MainCarousel() {
   const carouselControl = useRef(null);
@@ -20,19 +22,19 @@ function MainCarousel() {
 
   return (
     <>
-      <div className="flex p-10 justify-between">
-        <div className="font-bold text-xl">What's on your mind?</div>
+      <div className="flex p-8 justify-between">
+        <div className="font-bold text-2xl">What's cooking?</div>
         <div className="space-x-2">
           <button onClick={carouselLeft} className="hover:text-orange-400">
-            left
+            <img className='h-6 w-6' alt='left-btn-img' src={leftArrow}/>
           </button>
           <button onClick={carouselRight} className="hover:text-orange-400">
-            right
+          <img className='h-6 w-6' alt='right-btn-img' src={rightArrow}/>
           </button>
         </div>
       </div>
       <div
-        className="flex overflow-x-hidden pt-6 scroll-smooth"
+        className="flex overflow-x-auto scroll-smooth scrollbar-hidden"
          ref={carouselControl}
       >
        {cuisineData &&
