@@ -43,14 +43,14 @@ function CardStack() {
             <div className='text-xl font-bold'>Restaurants with online food delivery in YOUR_LOCATION</div>
             <div className='p-4'></div>
             <div className='flex space-x-5 pb-6'>
-              <button className='border border-black rounded-3xl py-2 px-4 hover:scale-95' onClick={handleDialog}>Filter</button>
-              <button className='border border-black rounded-3xl py-2 px-4 hover:scale-95' >Filter</button>
-              <button className='border border-black rounded-3xl py-2 px-4 hover:scale-95' onClick={handleFastDeliveries}>Fast Delivery</button>
-              <button className='border border-black rounded-3xl py-2 px-4 hover:scale-95' onClick={handlePureVeg}>Pure Veg</button>
-              <button className='border border-black rounded-3xl py-2 px-4 hover:scale-95' onClick={handleRatings}>Ratings 4+</button>
-              <button className='border border-black rounded-3xl py-2 px-4 hover:scale-95' onClick={handleRemoveFilter}>Remove Filter</button>
+              {/* <button className='border-2  hover:bg-orange-400 hover:text-white rounded-xl py-3 px-4 font-bold transition duration-250 transform hover:scale-100 active:scale-90' onClick={handleDialog}>Filter</button> */}
+              {/* <button className='border-2  hover:bg-orange-400 hover:text-white rounded-xl py-3 px-4 font-bold transition duration-250 transform hover:scale-100 active:scale-90' >Filter</button> */}
+              <button className='border-2  hover:bg-orange-400 hover:text-white rounded-xl py-3 px-4 font-bold transition duration-250 transform hover:scale-100 active:scale-90' onClick={handleFastDeliveries}>Fast Delivery</button>
+              <button className='border-2  hover:bg-orange-400 hover:text-white rounded-xl py-3 px-4 font-bold transition duration-250 transform hover:scale-100 active:scale-90' onClick={handlePureVeg}>Pure Veg</button>
+              <button className='border-2  hover:bg-orange-400 hover:text-white rounded-xl py-3 px-4 font-bold transition duration-250 transform hover:scale-100 active:scale-90' onClick={handleRatings}>Ratings 4+</button>
+              <button className='border-2  hover:bg-orange-400 hover:text-white rounded-xl py-3 px-4 font-bold transition duration-250 transform hover:scale-100 active:scale-90' onClick={handleRemoveFilter}>Remove Filter</button>
             </div>
-            <div className='flex flex-wrap justify-center gap-14'>
+            <div className='flex flex-wrap justify-center gap-10'>
             {
               resData &&
               resData.map((res)=>(
