@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import CarouselCard2 from '../cards/CarouselCard2';
-import FilterDialog from './FilterDialog';
+// import FilterDialog from './FilterDialog';
 
 function CardStack() {
   const [resData, setresData] = useState(null);
-  const [openDialog, setOpenDialog] = useState(false);
+  // const [openDialog, setOpenDialog] = useState(false);
   const restaurantData = useSelector(state => state.RestaurantsData);
   
   useEffect(()=>{
@@ -27,18 +27,18 @@ function CardStack() {
     setresData(ratings);
   }
 
-  const handleDialog = () =>{
-    setOpenDialog(!openDialog);
-  }
+  // const handleDialog = () =>{
+  //   setOpenDialog(!openDialog);
+  // }
 
   const handleRemoveFilter = () =>{ setresData(restaurantData);}
 
   return (
     <>
-        {
+        {/* {
         openDialog &&
           <FilterDialog/>
-        }
+        } */}
         <div className='p-10'>
             <div className='text-xl font-bold'>Restaurants with online food delivery in YOUR_LOCATION</div>
             <div className='p-4'></div>
