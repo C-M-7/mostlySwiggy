@@ -4,8 +4,7 @@ import {setCartSlice, removeCartSlice } from '../../Redux/slices/CartSlice'
 import { Link } from 'react-router-dom'
 
 function CartItems({data, quantity}) {
-  const dispatch = useDispatch()
-  console.log(data);
+  const dispatch = useDispatch();
   
   return (
     <div>

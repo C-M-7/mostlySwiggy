@@ -14,7 +14,6 @@ async function fetchData(location) {
         }
 
         const responseData = await response.json();
-        console.log('Response Data:', responseData);
 
         const cards = isMobile ? responseData.data.success.cards : responseData.data.cards;
 
@@ -79,7 +78,6 @@ async function fetchData(location) {
                 costForTwo,
             };
         });
-        console.log("hi");
         return filteredDetails; // Returning the parsed JSON data
     } catch (error) {
         console.error('Error fetching data:', error.message);

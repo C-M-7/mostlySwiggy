@@ -36,7 +36,6 @@ function Search() {
         let result;
         if (routes === "res") result = res;
         else result = cui;
-        console.log(result);
         setSearchResults(result);
       }, 1000);
     }
