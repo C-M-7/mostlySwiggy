@@ -16,13 +16,11 @@ const LSidebar = ({ isOpen, isClose }) => {
     const response = await FetchData(location);
     if(response) setLoader(false);
     toast.info('Your Location is in use!',{style:{background: 'yellow', fontSize: '17px'}})
-    console.log(response);
 
     // Set up for storing different cuisines in redux
     const cuisineSet = new Set();
     response.map((res)=>res.cuisines.map((cus)=> cuisineSet.add(cus)));
     const cuisineArr = [...cuisineSet];
-    // console.log(cuisineJson);
 
     dispatch(setRestaurantCuisines(cuisineArr));
     dispatch(setRestaurantData(response));
@@ -33,9 +31,7 @@ const LSidebar = ({ isOpen, isClose }) => {
     try{
       setLoader(true);
       const location = await FetchLocation();
-      console.log(location);
       dispatch(setuserlocation(location));
-      
       getUserData(location);
     }
     catch(err){

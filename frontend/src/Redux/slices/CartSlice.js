@@ -5,9 +5,7 @@ export const cartDataSlice = createSlice({
     initialState: [],
     reducers:{
         setCartSlice:(state, action)=>{
-            
             const index = state.findIndex((item) => item.data.dishName === action.payload.dishName);
-            
             if(index !== -1){
                 state[index].quantity = state[index].quantity+1;
             }

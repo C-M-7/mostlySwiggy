@@ -3,7 +3,6 @@ import AccordionItem from './AccordionItem';
 
 function Accordion({data, resturantId, restaurantData}) {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(data.title);
   
     return (
     <>

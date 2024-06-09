@@ -7,19 +7,25 @@ function Cart() {
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const cartData = useSelector((state) => state.CartSlice);
-  console.log(cartData);
 
   useEffect(()=>{
-    let totalprice = 0, totalquantity = 0;
-    cartData.map((item) => (item.data.dishPrice !== undefined ? totalprice = item.data.dishPrice*item.quantity : totalprice += 0, totalquantity += item.quantity));
-    setQuantity(totalquantity);
-    setPrice(totalprice);
+    if(cartData){
+      let totalprice = 0;
+      let totalquantity = 0;
+      cartData.forEach((item) => {
+        if (item.data.dishPrice !== undefined) {
+            totalprice += item.data.dishPrice * item.quantity;
+        }
+        totalquantity += item.quantity;
+      });
+      setQuantity(totalquantity);
+      setPrice(totalprice);
+    }
   }, [cartData])
 
   return (
     <>
       <div className='flex flex-col items-center' >
-        {/* <div className='text-3xl font-bold p-10'>Your cart</div> */}
           <div>
           {
             cartData &&
