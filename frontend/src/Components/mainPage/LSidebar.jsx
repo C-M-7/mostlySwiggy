@@ -6,64 +6,65 @@ import FetchData from "../../Config/FetchData";
 import { setRestaurantData } from "../../Redux/slices/RestaurantsData";
 import { setRestaurantCuisines } from "../../Redux/slices/RestaurantsCuisines";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 import Loader from "../loader/Loader";
 
-const LSidebar = ({ isOpen, isClose }) => {
+const LSidebar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
-  
-  const getUserData = async (location) =>{
-    const response = await FetchData(location);
-    if(response) setLoader(false);
-    toast.info('Your Location is in use!',{style:{background: 'yellow', fontSize: '17px'}})
 
-    // Set up for storing different cuisines in redux
+  const getUserData = async (location) => {
+    const response = await FetchData(location);
+    toast.info("Your Location is in use!", {
+      style: { background: "yellow", fontSize: "17px" },
+    });
+
     const cuisineSet = new Set();
-    response.map((res)=>res.cuisines.map((cus)=> cuisineSet.add(cus)));
+    response.map((res) => res.cuisines.map((cus) => cuisineSet.add(cus)));
     const cuisineArr = [...cuisineSet];
 
     dispatch(setRestaurantCuisines(cuisineArr));
     dispatch(setRestaurantData(response));
-    if(response) isClose();
-  }
+    if (response) {
+      setLoader(false);
+      navigate("/");
+    }
+  };
 
-  const getUserLocation = async () =>{
-    try{
+  const getUserLocation = async () => {
+    try {
       setLoader(true);
       const location = await FetchLocation();
       dispatch(setuserlocation(location));
       getUserData(location);
-    }
-    catch(err){
-      toast.error('Unable to fetch your location!',{style:{background: 'red', fontSize: '17px'}});
+    } catch (err) {
+      toast.error("Unable to fetch your location!", {
+        style: { background: "red", fontSize: "17px" },
+      });
       console.error(err.message);
     }
-  }
+  };
 
   return (
     <>
-      {
-        loader 
-        ?
-        <Loader/>
-        :
-        undefined
-      }
-        <div className={`h-screen w-[40%] z-40 shadow-lg top-0 left-0 fixed bg-white flex-col transition-transform duration-300  ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-          <div className="h-[15%] mx-10 mt-10 ">
-            <div onClick={isClose} className="cursor-pointer hover:text-orange-400">Close</div>
-            <div>
-              <input
-                className="h-10 w-[100%] border border-gray-400 pl-2 pr-20 mt-6 focus:outline-none focus:border-orange-400"
-                type="text"
-                placeholder="Search for area, street name..."
-              />
-            </div>
+      {loader ? (
+        <Loader />
+      ) : (
+        <div className="flex flex-col items-center justify-center mt-[15%]">
+          <div className="p-10 text-2xl font-bold">
+            Click the button to explore the restaurants near you
           </div>
           <div>
-            <button className="mx-10 hover:scale-105 duration-200 border shadow-md w-[40%] text-white bg-orange-400 p-2 " onClick={getUserLocation}>Get my current Location </button>
+            <button
+              className="border-2 shadow-md p-4 rounded-md hover:bg-orange-400 hover:text-white font-bold transition duration-250 transform hover:scale-100 active:scale-90"
+              onClick={getUserLocation}
+            >
+              Get My Location
+            </button>
           </div>
         </div>
+      )}
     </>
   );
 };

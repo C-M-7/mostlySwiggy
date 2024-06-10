@@ -14,12 +14,12 @@ function Search() {
     setSearchTerm("");
     setSearchResults("");
     setRoutes("cus");
-  }
+  };
   const resRoutes = () => {
     setSearchTerm("");
     setSearchResults("");
     setRoutes("res");
-  }
+  };
 
   const handleChange = (event) => {
     const term = event.target.value;
@@ -49,16 +49,34 @@ function Search() {
           <input
             className="border border-black pl-2 w-[100%] h-12 rounded-sm"
             type="text"
-            placeholder={routes === 'res' ? 'Search for restaurants...' : 'Search for cuisines...'}
+            placeholder={
+              routes === "res"
+                ? "Search for restaurants..."
+                : "Search for cuisines..."
+            }
             onChange={handleChange}
             value={searchTerm}
           />
         </div>
         <div className="mt-6">
-          <button className={`m-4 border p-3 rounded-md ${routes === 'res' ? 'bg-orange-400 transition text-white font-bold border-2 border-orange-400 shadow-md' : ''}`} onClick={resRoutes}>
+          <button
+            className={`m-4 border p-3 rounded-md ${
+              routes === "res"
+                ? "bg-orange-400 transition text-white font-bold border-2 border-orange-400 shadow-md"
+                : ""
+            }`}
+            onClick={resRoutes}
+          >
             Restaurants
           </button>
-          <button className={`m-4 border p-3 rounded-md ${routes === 'cus' ? 'bg-orange-400 transition text-white font-bold border-2 border-orange-400 shadow-md' : ''}`} onClick={cusRoutes}>
+          <button
+            className={`m-4 border p-3 rounded-md ${
+              routes === "cus"
+                ? "bg-orange-400 transition text-white font-bold border-2 border-orange-400 shadow-md"
+                : ""
+            }`}
+            onClick={cusRoutes}
+          >
             Cuisines
           </button>
         </div>
@@ -77,7 +95,11 @@ function Search() {
                         <div className="text-gray-400">{item[2]}</div>
                       </div>
                       <div>
-                        <img alt='resImage' className="w-20 h-20" src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${item[3]}`}/>
+                        <img
+                          alt="resImage"
+                          className="w-20 h-20"
+                          src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${item[3]}`}
+                        />
                       </div>
                     </li>
                   </Link>
