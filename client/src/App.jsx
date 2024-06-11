@@ -15,13 +15,13 @@ function App() {
   return (
       <Routes>
         <Route path="/location" element={<LSidebar/>}/>
-        <Route path='/home' element={resData ? <Home/> : <Navigate to='/location'/>} />
+        <Route path='/home' element={resData ? <Home/> : <Navigate to='/'/>} />
         <Route path='/' element={resData ? <Navigate to='/home'/> : <Navigate to='/location'/>}/>
-        <Route path='/help' element={resData ? <Help/> : <Navigate to='/location'/>}/>
-        <Route path='/cart' element={resData ? <Cart/> : <Navigate to='/location'/>}/>
-        <Route path='/search' element={resData ? <Search/> : <Navigate to='/location'/>}/>
-        <Route path='/fooditem/:cuisineName' element={resData ? <FoodItem/> : <Navigate to='/location'/>}/>
-        <Route path='/restaurant/:id' element={resData ? <Restaurant/> : <Navigate to='/location'/>}/>
+        <Route path='/help' element={resData ? <Help/> : <Navigate to='/'/>}/>
+        <Route path='/cart' element={resData ? <Cart/> : <Navigate to='/'/>}/>
+        <Route path='/search' element={resData ? <Search/> : <Navigate to='/'/>}/>
+        <Route path='/fooditem/:cuisineName' element={resData ? <FoodItem/> : <Navigate to='/'/>}/>
+        <Route path='/restaurant/:id' element={resData ? <Restaurant/> : <Navigate to='/'/>}/>
       </Routes>
   );
 }
