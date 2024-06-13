@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { setCartSlice, removeCartSlice } from "../../Redux/slices/CartSlice";
 import { toast } from "sonner";
+import ratingStar from '../../Utils/ratingStar.svg'
+import ruppeSign from '../../Utils/ruppeeSign.svg'
 
 // Add the inStock effect also
 function AccordionItem({ dishData, resturantId, restaurantData }) {
@@ -38,13 +40,11 @@ function AccordionItem({ dishData, resturantId, restaurantData }) {
 
   return (
     <>
-      <div className="flex justify-between my-3 border border-black">
-        <div className="flex flex-col">
-          <div>{dishData.isVeg}</div>
-          <div>{dishData.name}</div>
-          <div>{dishData.finalPrice}</div>
-          <div>{dishData.ratings.aggregatedRating.rating}</div>
-          <div>{dishData.ratings.aggregatedRating.ratingCount}</div>
+      <div className="flex justify-between my-3 rounded-md border-2 shadow-lg  hover:bg-orange-400 hover:text-white transition duration-150">
+        <div className="flex flex-col p-2 space-y-2">
+          <div className="font-bold text-xl">{dishData.name}</div>
+          <div>{dishData.finalPrice ? <span className="flex justify-start items-center"><img className='h-3.5 w-3.5' src={ruppeSign}/>{dishData.finalPrice/100}</span> : <span className="flex justify-start items-center"><img className='h-3.5 w-3.5' src={ruppeSign}/>--</span> }</div>
+          <div>{dishData.ratings.aggregatedRating.rating ? <span className="flex justify-start items-center"><img className='h-3.5 w-3.5 mr-1' src={ratingStar}/>{dishData.ratings.aggregatedRating.rating}</span> : <span className="flex justify-start items-center"><img className='h-3.5 w-3.5 mr-1' src={ratingStar}/>--</span> }</div>
         </div>
         <div className="flex flex-col items-center">
           <div>
@@ -62,7 +62,7 @@ function AccordionItem({ dishData, resturantId, restaurantData }) {
             </div>
           ) : (
             <div>
-              <button  type="button" onClick={sendToCart}>
+              <button type="button" onClick={sendToCart}>
                 ADD
               </button>
             </div>
