@@ -4,3 +4,12 @@
 .scrollbar-hidden::-webkit-scrollbar {
     display: none;
 }
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+
+.accordion-content.open {
+    max-height: 1000px; /* Set to a value greater than the maximum expected height of the content */    
+}

@@ -19,7 +19,7 @@ const Navbar = () => {
         <Link to='/' className="navfeatures py-6 cursor-pointer hover:text-orange-400">SwiggyLogo</Link>
       </div>
       <div className="flex space-x-12 mx-4">
-        <Link to='/search' className="navfeatures py-6 cursor-pointer  hover:text-orange-400">Search</Link>
+        <Link to='/search' className="navfeatures py-6 cursor-pointer  hover:text-orange-400 ">Search</Link>
         <Link to='/help' className="navfeatures py-6 cursor-pointer  hover:text-orange-400">Help</Link>
         <div className="navfeatures py-6 cursor-pointer  hover:text-orange-400" onClick={toggleRSideBar}>SignIn</div>
         <Link to='/cart' className="navfeatures py-6 cursor-pointer  hover:text-orange-400">Cart</Link>
