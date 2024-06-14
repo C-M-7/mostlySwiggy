@@ -4,6 +4,8 @@ import { setCartSlice, removeCartSlice } from "../../Redux/slices/CartSlice";
 import { toast } from "sonner";
 import ratingStar from '../../Utils/ratingStar.svg'
 import ruppeSign from '../../Utils/ruppeeSign.svg'
+import vegSVG from '../../Utils/veg_svg.png'
+import nonvegSVG from '../../Utils/Non_veg_svg.png'
 
 // Add the inStock effect also
 function AccordionItem({ dishData, resturantId, restaurantData }) {
@@ -42,7 +44,15 @@ function AccordionItem({ dishData, resturantId, restaurantData }) {
     <>
       <div className="flex justify-between my-3 rounded-md border-2 shadow-lg  hover:bg-orange-400 hover:text-white transition duration-150">
         <div className="flex flex-col p-2 space-y-2">
-          <div className="font-bold text-xl">{dishData.name}</div>
+          <div className="flex items-center space-x-2">
+            {
+              dishData.isVeg ? 
+              <img src={vegSVG} className="h-4 w-4"/>
+              :
+              <img src={nonvegSVG} className="h-4 w-4"/>
+            }
+            <div className="font-bold text-xl rounded-lg">{dishData.name}</div>
+          </div>
           <div>{dishData.finalPrice ? <span className="flex justify-start items-center"><img className='h-3.5 w-3.5' src={ruppeSign}/>{dishData.finalPrice/100}</span> : <span className="flex justify-start items-center"><img className='h-3.5 w-3.5' src={ruppeSign}/>--</span> }</div>
           <div>{dishData.ratings.aggregatedRating.rating ? <span className="flex justify-start items-center"><img className='h-3.5 w-3.5 mr-1' src={ratingStar}/>{dishData.ratings.aggregatedRating.rating}</span> : <span className="flex justify-start items-center"><img className='h-3.5 w-3.5 mr-1' src={ratingStar}/>--</span> }</div>
         </div>
@@ -50,19 +60,19 @@ function AccordionItem({ dishData, resturantId, restaurantData }) {
           <div>
             <img
               alt="dishImage"
-              className="w-20 h-20"
+              className="w-28 h-28 rounded-md"
               src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${dishData.imageId}`}
             />
           </div>
           {cartItems.size !== 0 && cartItems.get(dishData.name) !== undefined ? (
-            <div className="flex justify-between space-x-5">
+            <div className="flex justify-between space-x-5 z-10">
               <button onClick={sendToCart}>+</button>
               <div>{cartItems.get(dishData.name)}</div>
               <button onClick={removeFromCart}>-</button>
             </div>
           ) : (
             <div>
-              <button type="button" onClick={sendToCart}>
+              <button type="button" onClick={sendToCart} z-10>
                 ADD
               </button>
             </div>

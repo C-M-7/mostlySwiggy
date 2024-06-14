@@ -4,6 +4,7 @@ import Navbar from "../mainPage/Navbar";
 import Accordion from "./Accordion";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import ratingStar from '../../Utils/ratingStar.svg'
 
 function Restaurant() {
   const { id } = useParams();
@@ -103,8 +104,7 @@ function Restaurant() {
               <Skeleton count={5} className="h-6 my-1" />
             )}
             {headerData.name ? (
-              <div className="flex flex-col border-4 border-black bg-gray-300 mt-10">
-                <span className="font-bold text-2xl">Footer</span>
+              <div className="flex flex-col p-10 bg-black mt-10 text-white">
                 <div>{footerData.area}</div>
                 <div>{footerData.completeAddress}</div>
                 <div>{footerData.text}</div>
