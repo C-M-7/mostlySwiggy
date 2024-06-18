@@ -38,9 +38,9 @@ const Navbar = () => {
           <div className="flex mx-10 items-center">
             <Link
               to="/"
-              className="navfeatures py-6 cursor-pointer hover:text-orange-400"
+              className="navfeatures py-6 cursor-pointer hover:text-orange-400 transition"
             >
-              SwiggyLogo
+              mostlySwiggy
             </Link>
           </div>
           <div className="flex space-x-36 mx-20 ">

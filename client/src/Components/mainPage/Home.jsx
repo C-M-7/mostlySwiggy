@@ -19,10 +19,9 @@ function Home() {
           <hr className="mt-8" />
           <CardStack />
         </div>
-        <div className="px-[10%]">
-          <hr />
-          <MainOptions1 />
-          <MainOptions2 />
+        <div className="py-[2%]">
+          {/* <MainOptions1 /> */}
+          {/* <MainOptions2 /> */}
         </div>
         <Footer />
       </div>

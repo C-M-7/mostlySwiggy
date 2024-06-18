@@ -4,7 +4,9 @@ import Navbar from "../mainPage/Navbar";
 import Accordion from "./Accordion";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import ratingStar from '../../Utils/ratingStar.svg'
+import ratingStar from "../../Utils/ratingStar.svg";
+import vegSVG from "../../Utils/veg_svg.png";
+import nonvegSVG from "../../Utils/Non_veg_svg.png";
 
 function Restaurant() {
   const { id } = useParams();
@@ -65,8 +67,26 @@ function Restaurant() {
                   headerData.isOpen ? "border-orange-400" : "border-black"
                 }  my-8 rounded-md p-2`}
               >
-                <div>{headerData.avgRating}</div>
-                <div>{headerData.veg ? "veg" : "non-veg"}</div>
+                <div>
+                  {headerData.avgRating ? (
+                    <span className="flex justify-start items-center">
+                      <img className="h-3.5 w-3.5 mr-1" src={ratingStar} />
+                      {headerData.avgRating}
+                    </span>
+                  ) : (
+                    <span className="flex justify-start items-center">
+                      <img className="h-3.5 w-3.5 mr-1" src={ratingStar} />
+                      --
+                    </span>
+                  )}
+                </div>
+                <div className="my-1">
+                  {headerData.veg ? (
+                    <img src={vegSVG} className="h-4 w-4" />
+                  ) : (
+                    <img src={nonvegSVG} className="h-4 w-4" />
+                  )}
+                </div>
                 <div>{headerData.locality}</div>
                 <div>{headerData.cuisines}</div>
                 <div>{headerData.costForTwoMessage}</div>
