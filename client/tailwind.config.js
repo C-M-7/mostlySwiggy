@@ -6,9 +6,9 @@ export default {
   ],
   theme: {
     extend: {
-      stroke: {
-        'hover': '{}' // Add hover variant
-      }
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
     },
   },
   plugins: [],

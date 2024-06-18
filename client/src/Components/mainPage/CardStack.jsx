@@ -30,7 +30,7 @@ function CardStack() {
   return (
     <>
         <div className='p-10'>
-            <div className='text-xl font-bold'>Restaurants with online food delivery in YOUR_LOCATION</div>
+            <div className='text-xl font-bold'>Restaurants with online food delivery near you</div>
             <div className='p-4'></div>
             <div className='flex space-x-5 pb-6'>
               {/* <button className='border-2  hover:bg-orange-400 hover:text-white rounded-xl py-3 px-4 font-bold transition duration-250 transform hover:scale-100 active:scale-90' onClick={handleDialog}>Filter</button> */}
