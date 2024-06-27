@@ -13,6 +13,7 @@ function Restaurant() {
   const [headerData, setheaderData] = useState("");
   const [menuData, setMenuData] = useState([]);
   const [footerData, setfooterData] = useState("");
+  const [isVeg, setVeg] = useState(2);
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {
@@ -39,9 +40,9 @@ function Restaurant() {
       const menu = menuFinder.groupedCard?.cardGroupMap?.REGULAR?.cards;
       const { imageId, text } = menu[menu.length - 2]?.card?.card || {};
       const { name, area, completeAddress } =
-        menu[menu.length - 1]?.card?.card || {};
+      menu[menu.length - 1]?.card?.card || {};
       const footer = { imageId, text, name, area, completeAddress };
-
+      
       setheaderData(header || {});
       setMenuData(menu || {});
       setfooterData(footer || {});
@@ -99,6 +100,18 @@ function Restaurant() {
             ) : (
               <Skeleton className="my-8 h-10" />
             )}
+
+            {
+              headerData.name?(
+                <div className="flex space-x-2 mb-4">
+                  <button className={`flex items-center border-2 border-green-500 p-1 rounded-md hover:text-white hover:bg-green-500 transition ${isVeg===1 ? 'bg-green-500 text-white' : ''} `} onClick={() => {isVeg===2 ? setVeg(1) : setVeg(2)}}><span><img src={vegSVG} className="mr-2 h-4 w-4"/></span>Veg</button>
+                  <button className={`flex items-center border-2 border-red-600 p-1 rounded-md hover:text-white hover:bg-red-600 transition ${isVeg===0 ? 'bg-red-600 text-white' : ''}`} onClick={() => {isVeg===2 ? setVeg(0) : setVeg(2)}}><span><img src={nonvegSVG} className="mr-2 h-4 w-4"/></span>Non-Veg</button>
+                </div>
+              ):(
+                <Skeleton count={1} className="h-6 mb-4" />
+              )
+            }
+            
             {headerData.name ? (
               menuData.map((item, index) => {
                 const card = item.card?.card;
@@ -109,6 +122,7 @@ function Restaurant() {
                       key={index}
                       index={index}
                       data={card}
+                      wantVeg={isVeg}
                       resturantId={id}
                       restaurantData={{
                         name: headerData.name,

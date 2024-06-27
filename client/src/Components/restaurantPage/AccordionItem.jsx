@@ -65,14 +65,14 @@ function AccordionItem({ dishData, resturantId, restaurantData }) {
             />
           </div>
           {cartItems.size !== 0 && cartItems.get(dishData.name) !== undefined ? (
-            <div className="flex justify-between space-x-5 z-10">
+            <div className="flex justify-between space-x-5">
               <button onClick={sendToCart}>+</button>
               <div>{cartItems.get(dishData.name)}</div>
               <button onClick={removeFromCart}>-</button>
             </div>
           ) : (
             <div>
-              <button type="button" onClick={sendToCart} z-10>
+              <button type="button" onClick={sendToCart}>
                 ADD
               </button>
             </div>
