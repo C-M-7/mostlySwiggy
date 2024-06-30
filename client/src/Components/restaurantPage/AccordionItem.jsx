@@ -6,6 +6,7 @@ import ratingStar from '../../Utils/ratingStar.svg'
 import ruppeSign from '../../Utils/ruppeeSign.svg'
 import vegSVG from '../../Utils/veg_svg.png'
 import nonvegSVG from '../../Utils/Non_veg_svg.png'
+import foodpicNA from '../../Utils/food-pic-na.svg'
 
 // Add the inStock effect also
 function AccordionItem({ dishData, resturantId, restaurantData }) {
@@ -42,7 +43,7 @@ function AccordionItem({ dishData, resturantId, restaurantData }) {
 
   return (
     <>
-      <div className="flex justify-between my-3 rounded-md border-2 shadow-lg  hover:bg-orange-400 hover:text-white transition duration-150">
+      <div className="flex justify-between my-3 rounded-md border-2 shadow-lg transition duration-150">
         <div className="flex flex-col p-2 space-y-2">
           <div className="flex items-center space-x-2">
             {
@@ -65,14 +66,14 @@ function AccordionItem({ dishData, resturantId, restaurantData }) {
             />
           </div>
           {cartItems.size !== 0 && cartItems.get(dishData.name) !== undefined ? (
-            <div className="flex justify-between space-x-5">
+            <div className="flex justify-between space-x-4 border-2 font-bold rounded-sm px-4 my-1.5 text-black bg-white hover:bg-gray-200 hover:transition">
               <button onClick={sendToCart}>+</button>
               <div>{cartItems.get(dishData.name)}</div>
               <button onClick={removeFromCart}>-</button>
             </div>
           ) : (
             <div>
-              <button type="button" onClick={sendToCart}>
+              <button type="button" className = 'border-2 my-1.5 px-8 rounded-sm font-bold text-black bg-white hover:bg-gray-200 hover:transition' onClick={sendToCart}>
                 ADD
               </button>
             </div>

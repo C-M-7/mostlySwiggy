@@ -7,9 +7,11 @@ import "react-loading-skeleton/dist/skeleton.css";
 import ratingStar from "../../Utils/ratingStar.svg";
 import vegSVG from "../../Utils/veg_svg.png";
 import nonvegSVG from "../../Utils/Non_veg_svg.png";
+import NoRestaurants from "../loader/NoRestaurants";
 
 function Restaurant() {
   const { id } = useParams();
+  const [noRestaurants, setNoRestuarants] = useState(false);
   const [headerData, setheaderData] = useState("");
   const [menuData, setMenuData] = useState([]);
   const [footerData, setfooterData] = useState("");
@@ -44,12 +46,28 @@ function Restaurant() {
       const footer = { imageId, text, name, area, completeAddress };
       
       setheaderData(header || {});
+      console.log(headerData);
       setMenuData(menu || {});
       setfooterData(footer || {});
     } catch (error) {
-      console.log("Error occured in fetching data: ", error);
+      setNoRestuarants(true);
     }
   };
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      if(headerData.id !== null){
+        setNoRestuarants(false);
+      }
+      else{
+        setNoRestuarants(true);
+      }
+    },3000)
+  },[headerData])
+
+  if(noRestaurants){
+    return <NoRestaurants/>
+  }
 
   return (
     <>
@@ -104,8 +122,8 @@ function Restaurant() {
             {
               headerData.name?(
                 <div className="flex space-x-2 mb-4">
-                  <button className={`flex items-center border-2 border-green-500 p-1 rounded-md hover:text-white hover:bg-green-500 transition ${isVeg===1 ? 'bg-green-500 text-white' : ''} `} onClick={() => {isVeg===2 ? setVeg(1) : setVeg(2)}}><span><img src={vegSVG} className="mr-2 h-4 w-4"/></span>Veg</button>
-                  <button className={`flex items-center border-2 border-red-600 p-1 rounded-md hover:text-white hover:bg-red-600 transition ${isVeg===0 ? 'bg-red-600 text-white' : ''}`} onClick={() => {isVeg===2 ? setVeg(0) : setVeg(2)}}><span><img src={nonvegSVG} className="mr-2 h-4 w-4"/></span>Non-Veg</button>
+                  <button className={`flex items-center border-2 p-2 rounded-md hover:text-white hover:bg-green-500 transition ${isVeg===1 ? 'bg-green-500 text-white' : ''} `} onClick={() => {isVeg===2 ? setVeg(1) : setVeg(2)}}><span><img src={vegSVG} className="mr-2 h-4 w-4"/></span>Veg</button>
+                  <button className={`flex items-center border-2 p-2 rounded-md hover:text-white hover:bg-red-600 transition ${isVeg===0 ? 'bg-red-600 text-white' : ''}`} onClick={() => {isVeg===2 ? setVeg(0) : setVeg(2)}}><span><img src={nonvegSVG} className="mr-2 h-4 w-4"/></span>Non-Veg</button>
                 </div>
               ):(
                 <Skeleton count={1} className="h-6 mb-4" />
