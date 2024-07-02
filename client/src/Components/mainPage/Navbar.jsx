@@ -44,13 +44,13 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="flex space-x-36 mx-20 ">
-            <span className="flex items-center space-x-1 cursor-pointer">
+            <span className="flex items-center space-x-1 cursor-pointer transition hover:text-orange-400">
               <img src={searchSVG} className="h-5 w-5" />
               <Link to="/search" className="navfeatures py-6">
                 Search
               </Link>
             </span>
-            <span className="flex items-center space-x-1 cursor-pointer">
+            <span className="flex items-center space-x-1 cursor-pointer transition hover:text-orange-400">
               <img src={helpSVG} className="h-5 w-5" />
               <Link
                 to="/help"
@@ -62,7 +62,7 @@ const Navbar = () => {
             <span className="flex items-center space-x-1 cursor-pointer">
               <img src={signinSVG} className="h-5 w-5" />
               <div
-                className="navfeatures py-6 cursor-pointer"
+                className="navfeatures py-6 cursor-pointer transition hover:text-orange-400"
                 onClick={toggleRSideBar}
               >
                 SignIn
@@ -72,7 +72,7 @@ const Navbar = () => {
               <img src={cartSVG} className='h-5 w-5' />
               <Link
                 to="/cart"
-                className={`${appearance ? 'text-orange-400' : 'text-black'} py-6 cursor-pointer`}
+                className={`${appearance ? 'text-orange-400' : 'text-black'} py-6 cursor-pointer transition hover:text-orange-400`}
               >
                 Cart
               </Link>

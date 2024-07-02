@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../mainPage/Navbar";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import ratingSvg from "../../Utils/ratingStar.svg";
 
 function Search() {
   const [routes, setRoutes] = useState("res");
@@ -87,12 +88,21 @@ function Search() {
                 searchResults.map((item) => (
                   <Link to={`/restaurant/${item[1]}`}>
                     <li
-                      className="border-2 flex justify-between rounded-md m-2 hover:bg-orange-400 hover:text-white transition shadow-md p-4"
+                      className="border-2 flex justify-between rounded-md m-2 hover:bg-gray-200 transition shadow-md p-4"
                       key={item[1]}
                     >
-                      <div className="flex flex-col">
+                      <div className="flex flex-col space-y-1">
                         <div className="text-2xl font-bold">{item[0]}</div>
-                        <div className="text-gray-400">{item[2]}</div>
+                        <div className="flex items-center space-x-1">
+                          <div>
+                            <img
+                              src={ratingSvg}
+                              className="h-4 w-4"
+                              alt="ratingSvg"
+                            />
+                          </div>
+                          <div>{item[2]}</div>
+                        </div>
                       </div>
                       <div>
                         <img
