@@ -16,9 +16,7 @@ const LSidebar = () => {
 
   const getUserData = async (location) => {
     const response = await FetchData(location);
-    toast.info("Your Location is in use!", {
-      style: { background: "yellow", fontSize: "17px" },
-    });
+    toast.info("Your Location is in use!")
 
     const cuisineSet = new Set();
     response.map((res) => res.cuisines.map((cus) => cuisineSet.add(cus)));
@@ -39,9 +37,7 @@ const LSidebar = () => {
       dispatch(setuserlocation(location));
       getUserData(location);
     } catch (err) {
-      toast.error("Unable to fetch your location!", {
-        style: { background: "red", fontSize: "17px" },
-      });
+      toast.error("Unable to fetch your location!");
       console.error(err.message);
     }
   };

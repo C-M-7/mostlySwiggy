@@ -19,7 +19,7 @@ const Navbar = () => {
     }
     else{
       setAppearance(false);
-    }
+    } 
   },[cartData])
 
   return (

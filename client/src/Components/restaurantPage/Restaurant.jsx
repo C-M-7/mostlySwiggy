@@ -46,7 +46,6 @@ function Restaurant() {
       const footer = { imageId, text, name, area, completeAddress };
       
       setheaderData(header || {});
-      console.log(headerData);
       setMenuData(menu || {});
       setfooterData(footer || {});
     } catch (error) {

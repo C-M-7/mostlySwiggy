@@ -8,37 +8,42 @@ import vegSVG from '../../Utils/veg_svg.png'
 import nonvegSVG from '../../Utils/Non_veg_svg.png'
 import foodpicNA from '../../Utils/food-pic-na.svg'
 
-// Add the inStock effect also
 function AccordionItem({ dishData, resturantId, restaurantData }) {
   const [cartItems, setCartItems] = useState(new Map());
+  const [randomRating, setRandomRating] = useState(0); // Add state for random rating
   const cartyy = useSelector((state) => state.CartSlice);
 
-  useEffect(()=>{
+  useEffect(() => {
     const mapItems = new Map();
-    cartyy.map((item)=> mapItems.set(item.data.dishName, item.quantity));
+    cartyy.map((item) => mapItems.set(item.data.dishName, item.quantity));
     setCartItems(mapItems);
-  },[cartyy])
+  }, [cartyy]);
+
+  useEffect(() => {
+    const rate = Math.floor(Math.random() * (250 - 50 + 1)) + 50;
+    setRandomRating(rate); // Generate random rating once
+  }, []);
 
   const dispatch = useDispatch();
 
+  const dishPrice = dishData.finalPrice ? dishData.finalPrice / 100 : randomRating;
+
   const cart = {
     dishName: dishData.name,
-    dishPrice: dishData.finalPrice,
+    dishPrice: dishPrice,
     dishVeg: dishData.isVeg,
     dishImage: dishData.imageId,
     resId: resturantId,
     resName: restaurantData.name,
   };
 
-  const removeFromCart = () =>{
+  const removeFromCart = () => {
     dispatch(removeCartSlice(cart));
-  }
+  };
 
   const sendToCart = () => {
     dispatch(setCartSlice(cart));
-    toast.success("Item added to cart!", {
-      style: { background: "lightgreen", fontSize: "17px" },
-    });
+    toast.success("Item added to cart!");
   };
 
   return (
@@ -48,14 +53,14 @@ function AccordionItem({ dishData, resturantId, restaurantData }) {
           <div className="flex items-center space-x-2">
             {
               dishData.isVeg ? 
-              <img src={vegSVG} className="h-4 w-4"/>
+              <img src={vegSVG} className="h-4 w-4" alt="Veg"/>
               :
-              <img src={nonvegSVG} className="h-4 w-4"/>
+              <img src={nonvegSVG} className="h-4 w-4" alt="Non-Veg"/>
             }
             <div className="font-bold text-xl rounded-lg">{dishData.name}</div>
           </div>
-          <div>{dishData.finalPrice ? <span className="flex justify-start items-center"><img className='h-3.5 w-3.5' src={ruppeSign}/>{dishData.finalPrice/100}</span> : <span className="flex justify-start items-center"><img className='h-3.5 w-3.5' src={ruppeSign}/>--</span> }</div>
-          <div>{dishData.ratings.aggregatedRating.rating ? <span className="flex justify-start items-center"><img className='h-3.5 w-3.5 mr-1' src={ratingStar}/>{dishData.ratings.aggregatedRating.rating}</span> : <span className="flex justify-start items-center"><img className='h-3.5 w-3.5 mr-1' src={ratingStar}/>--</span> }</div>
+          <div>{dishPrice ? <span className="flex justify-start items-center"><img className='h-3.5 w-3.5' src={ruppeSign} alt="Rupee"/>{dishPrice}</span> : <span className="flex justify-start items-center"><img className='h-3.5 w-3.5' src={ruppeSign} alt="Rupee"/>{randomRating}</span> }</div>
+          <div>{dishData.ratings.aggregatedRating.rating ? <span className="flex justify-start items-center"><img className='h-3.5 w-3.5 mr-1' src={ratingStar} alt="Rating"/>{dishData.ratings.aggregatedRating.rating}</span> : <span className="flex justify-start items-center"><img className='h-3.5 w-3.5 mr-1' src={ratingStar} alt="Rating"/>--</span> }</div>
         </div>
         <div className="flex flex-col items-center">
           <div>

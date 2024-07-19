@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { setCartSlice, removeCartSlice } from "../../Redux/slices/CartSlice";
 import { Link } from "react-router-dom";
-import ratingStar from "../../Utils/ratingStar.svg";
 import foodQuantitySvg from '../../Utils/food-quantity.svg'
 import ruppeSign from "../../Utils/ruppeeSign.svg";
 import vegSVG from "../../Utils/veg_svg.png";
@@ -36,7 +35,7 @@ function CartItems({ data, quantity }) {
             {data.dishPrice ? (
               <span className="flex items-center">
                 <img className="h-3.5 w-3.5 mr-0.5" src={ruppeSign} />
-                {data.dishPrice / 100}
+                {data.dishPrice}
               </span>
             ) : (
               <span className="flex justify-start items-center">
