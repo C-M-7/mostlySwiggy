@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import CartItems from './CartItems';
 import EmptyCart from '../loader/EmptyCart';
+import PriceBar from './PriceBar';
 
 function Cart() {
   const [price, setPrice] = useState(0);
@@ -39,16 +40,7 @@ function Cart() {
         {
           quantity !== 0
           ?
-          <div className='flex flex-col items-center'>
-            <div className='flex justify-between space-x-40'>
-              <div>Price</div>
-              <div>{price/100}</div>
-            </div>
-            <div className='flex justify-between space-x-40'>
-              <div>Quantity</div>
-              <div>{quantity}</div>
-            </div>
-          </div>
+            <PriceBar price={price} quantity={quantity}/>
           :
           <div>
             <EmptyCart/>

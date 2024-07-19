@@ -3,8 +3,6 @@ import CardStack from "./CardStack";
 import Footer from "./Footer";
 import Main2Carousel from "./Main2Carousel";
 import MainCarousel from "./MainCarousel";
-import MainOptions2 from "./MainOption2";
-import MainOptions1 from "./MainOptions1";
 import Navbar from "./Navbar";
 
 function Home() {
